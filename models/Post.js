@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// schema
 const postSchema = new mongoose.Schema(
   {
     title: {
@@ -14,21 +13,19 @@ const postSchema = new mongoose.Schema(
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
+      // required: true,  //uncomment this later
       ref: "User",
     },
-    // images: [
-    //   {
-    //     url: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //     public_id: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //   },
-    // ],
+    image: {
+      url: {
+        type: String,
+        required: true,
+      },
+      public_id: {
+        type: String,
+        required: true,
+      },
+    },
     comments: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -40,6 +37,7 @@ const postSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
 const Post = mongoose.model("Post", postSchema);
 
 module.exports = Post;
